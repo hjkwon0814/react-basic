@@ -23,7 +23,7 @@
         
         let counter = 0;
         function countUp() {
-            counter = counter + 1;
+            counter = counter + 2;
             render();
         }
         function render() {
@@ -32,7 +32,8 @@
         const Container = () => (
             <div>
                 <h3>Total clicks: {counter}</h3>
-                <button onClick={countUp}>Click me</button>
+                <button onClick={countUp}>Click me </button>
+
             </div>
         );
         render();
