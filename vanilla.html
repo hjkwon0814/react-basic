@@ -21,21 +21,23 @@
         // const btn = React.createElement("button", {onClick: () => console.log("i'm click done")}, "Click me");
         // const container = React.createElement("div", null, [Title, Button])
         
-        let counter = 0;
-        function countUp() {
-            counter = counter + 2;
-            render();
-        }
-        function render() {
-            ReactDOM.render(<Container/>, root);
-        }
-        const Container = () => (
+        // let counter = 0;
+        // function countUp() {
+        //     counter = counter + 1;
+        //     render();
+        // }
+        // function render() {
+        //     ReactDOM.render(<App/>, root);
+        // }
+        function App() {
+            const [counter, modifier] = React.useState(0);
+            return (
             <div>
                 <h3>Total clicks: {counter}</h3>
-                <button onClick={countUp}>Click me </button>
-
+                <button>Click me</button>
             </div>
         );
-        render();
+        } 
+        ReactDOM.render(<App/>, root);
     </script>
 </html>
