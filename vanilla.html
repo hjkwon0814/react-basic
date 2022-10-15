@@ -1,69 +1,91 @@
 <!DOCTYPE html>
 <html>
-    <body>
-        <div id="root"></div>
-    </body>
-    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <script type="text/babel">
-        const root = document.getElementById("root");
-        // function Title () {
-        //     return <h3 id="title" onMouseEnter= {() => console.log("mouse Enter")}>Hello I'm a title</h3>;
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    const root = document.getElementById("root");
+    // function Title () {
+    //     return <h3 id="title" onMouseEnter= {() => console.log("mouse Enter")}>Hello I'm a title</h3>;
+    // }
+    // const Button = () => (
+    //     <button style={{backgroundColor: "tomato",}} onClick={() => console.log("im clicked")}>
+    //         Click me
+    //     </button>
+    // );
+    // const span = React.createElement("span",{id:"sexy-span", style: {color :"red"}}, "hello I'm a span");
+    // const btn = React.createElement("button", {onClick: () => console.log("i'm click done")}, "Click me");
+    // const container = React.createElement("div", null, [Title, Button])
+
+    // let counter = 0;
+    // function countUp() {
+    //     counter = counter + 1;
+    //     render();
+    // }
+    // function render() {
+    //     ReactDOM.render(<App/>, root);
+    // }
+
+    function MinutesToHours() {
+        // const [counter, setCounter] = React.useState(0);
+        // const onClick = () => {
+        //     // setCounter(counter + 1);
+        //     setCounter((current) => current + 1);
         // }
-        // const Button = () => (
-        //     <button style={{backgroundColor: "tomato",}} onClick={() => console.log("im clicked")}>
-        //         Click me
-        //     </button>
-        // );
-        // const span = React.createElement("span",{id:"sexy-span", style: {color :"red"}}, "hello I'm a span");
-        // const btn = React.createElement("button", {onClick: () => console.log("i'm click done")}, "Click me");
-        // const container = React.createElement("div", null, [Title, Button])
-        
-        // let counter = 0;
-        // function countUp() {
-        //     counter = counter + 1;
-        //     render();
-        // }
-        // function render() {
-        //     ReactDOM.render(<App/>, root);
-        // }
-        function App() {
-            // const [counter, setCounter] = React.useState(0);
-            // const onClick = () => {
-            //     // setCounter(counter + 1);
-            //     setCounter((current) => current + 1);
-            // }
-            const [amount, setAmount] = React.useState(0);
-            const [inverted, setInverted] = React.useState(false);
-            const onChange = (event) => {
-                setAmount(event.target.value);
-            }
-            const reset = () => {
-                setAmount(0);
-            }
-            const onFlip = () => {
-                reset();
-                setInverted((current) => !current);
-            }
-            return (
+        const [amount, setAmount] = React.useState(0);
+        const [inverted, setInverted] = React.useState(false);
+        const onChange = (event) => {
+            setAmount(event.target.value);
+        }
+        const reset = () => {
+            setAmount(0);
+        }
+        const onFlip = () => {
+            reset();
+            setInverted((current) => !current);
+        }
+        return (
             // <div>
             //     <h3>Total clicks: {counter}</h3>
             //     <button onClick={onClick}>Click me</button>
             // </div>
             <div>
-                <h1 className="hi">Super Converter</h1>
                 <label htmlFor="minutes">Minutes : </label>
-                <input value={inverted ? amount * 60 : amount} id="minutes" placeholder="Minutes" type="number" onChange={onChange} disabled={inverted === true}/>
+                <input value={inverted ? amount * 60 : amount} id="minutes" placeholder="Minutes" type="number" onChange={onChange} disabled={inverted === true} />
                 <h4>You want to convert {amount}</h4>
                 <label htmlFor="hours">Hours : </label>
-                <input value={inverted ? amount : Math.round( amount / 60)} id="hours" placeholder="Hours" type="number" onChange={onChange} disabled={inverted === false}/>
-                <button onClick={reset}>Reset </button>
+                <input value={inverted ? amount : Math.round(amount / 60)} id="hours" placeholder="Hours" type="number" onChange={onChange} disabled={inverted === false} />
+                <button onClick={reset}>Reset</button>
                 <button onClick={onFlip}>{inverted ? "Turn back" : "Invert"}</button>
             </div>
         );
-        } 
-        ReactDOM.render(<App/>, root);
-    </script>
+    }
+
+    function KmToMiles() {
+
+    }
+
+    function App() {
+        const[index, setIndex] = React.useState(0);
+        const onSelect = (event) => {
+            console.log(event.target.value);
+        }
+        return (
+            <div>
+                <h1>Super Converter</h1>
+                <select onChange={onSelect}>
+                    <option value="0">Minutes & Hours</option>
+                    <option value="1">Km & Miles</option>
+                </select>
+            </div>
+        );
+    }
+    ReactDOM.render(<App />, root);
+</script>
+
 </html>
